@@ -18,11 +18,17 @@ export class FormPreviewComponent implements OnInit {
   constructor(private router: Router, private formService: FormFieldService) {}
 
   ngOnInit(): void {
-
+this.formService.currentfildes$.subscribe((x) => {
+      this.formFieldsArray = x;
+      console.log( this.formFieldsArray);
+      
+    });
   }
 
   submit() {
     this.formValue = this.dynamicForm.value;
+    console.log(this.formValue );
+    
   }
 
   defaultform() {
@@ -30,9 +36,6 @@ export class FormPreviewComponent implements OnInit {
     this.formService.setLoading(this.loading);
   }
   removeField(name: string) {
-    //     this.formService.removeBehaviorsubjectItem(name).subscribe(x=>{
-    //   this.formFieldsArray=x;
-    //   console.log(x);
-    // })
+
   }
 }

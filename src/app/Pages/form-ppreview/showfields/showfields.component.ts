@@ -22,9 +22,11 @@ export class ShowfieldsComponent implements OnInit {
     this.dynamicForm = new FormGroup({
       fields: new FormArray([]),
     });
-    this.formService.currentfildes$.subscribe((x) => {
-      this.formFieldsArray = x;
-    });
+    // this.formService.currentfildes$.subscribe((x) => {
+    //   this.formFieldsArray = x;
+    //   console.log( this.formFieldsArray);
+      
+    // });
   }
  
   removeField(aname:String){}
