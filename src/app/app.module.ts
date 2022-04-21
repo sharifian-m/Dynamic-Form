@@ -4,16 +4,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DefaultFormComponent } from './Pages/default-form/default-form/default-form.component';
+import { FormPreviewComponent } from './Pages/form-ppreview/formPreview/form-preview.component';
 
-import { FormPreviewComponent } from './form-preview/form-preview.component';
-import { DynamicFormComponent } from './form-preview/dynamic-form/dynamic-form.component';
-import { DefaultFormComponent } from './form-preview/default-form/default-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     FormPreviewComponent,
-    DynamicFormComponent,
+    // DynamicFormComponent,
     DefaultFormComponent
   ],
   imports: [

@@ -13,6 +13,6 @@ export class DefaultFormComponent implements OnInit {
   ngOnInit(): void {
   }
   createCustomForm(){
-this.router.navigate(['custom']);
+this.router.navigate(['/custom']);
   }
 }

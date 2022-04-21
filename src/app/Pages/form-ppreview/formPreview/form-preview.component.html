@@ -10,7 +10,7 @@
       
         <div *ngIf="formField.controlType==='textbox'" class="mb-3">
           <label  [attr.for]="formField.name" class="form-label">{{formField.label}}</label>
-          <input type="text" class="form-control" [id]="formField.name" [formControlName]="formField.name" (click)="removeField()">
+          <input type="text" class="form-control" [id]="formField.name" [formControlName]="formField.name" (click)="removeField(formField.name)">
           <p  class="red" *ngIf="formField.required===true">پر کردن این فیلد الزامیست</p>
         </div>
     
@@ -65,6 +65,7 @@
           <button type="submit" class="btn btn-primary" (click)="defaultform()">defaultform</button>
          </div>
         </form>
+        <!-- <p>Form value: {{ formValue | json }}</p> -->
     </div>
   </div>
 

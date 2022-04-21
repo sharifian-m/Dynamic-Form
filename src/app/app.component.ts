@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
-import { FormFieldService } from './form-field.service';
-import { defaultFields } from './models/defaultFields';
+
+import { defaultFields } from './Core/models/defaultFields';
+import { FormFieldService } from './Core/Services/form-field.service';
 
 @Component({
   selector: 'app-root',
