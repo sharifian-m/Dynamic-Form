@@ -1,0 +1,75 @@
+<div class="card m-2">
+  <div class="card-header">
+  Form Preview
+  </div>
+
+    <div class="card-body">
+    
+      <form [formGroup]="dynamicForm" (ngSubmit)="submit()">
+      <div *ngFor="let formField of formFieldsArray" formField.name class="m-4" >
+      
+        <div *ngIf="formField.controlType==='textbox'" class="mb-3">
+          <label  [attr.for]="formField.name" class="form-label">{{formField.label}}</label>
+          <input type="text" class="form-control" [id]="formField.name" [formControlName]="formField.name" (click)="removeField()">
+          <p  class="red" *ngIf="formField.required===true">پر کردن این فیلد الزامیست</p>
+        </div>
+    
+        <div *ngIf="formField.controlType==='number'" class="mb-3">
+          <label  [attr.for]="formField.name" class="form-label">{{formField.label}}</label>
+          <input type="number" class="form-control" [id]="formField.name" [formControlName]="formField.name">
+          <p  class="red" *ngIf="formField.required===true">پر کردن این فیلد الزامیست</p>
+        </div>
+    
+        <div *ngIf="formField.controlType==='checkbox'" class="mb-3 form-check form-check-inline">
+          <label  [attr.for]="formField.name" class="form-check-label">{{formField.label}}</label>
+          <input type="checkbox" class="form-check-input" [id]="formField.name" [formControlName]="formField.name">
+          <p  class="red" *ngIf="formField.required===true">  این فیلد الزامیست</p>
+        </div>
+
+
+        <div *ngIf="formField.controlType==='email'" class="mb-3">
+          <label  [attr.for]="formField.name" class="form-label">{{formField.label}}</label>
+          <input type="email" class="form-control" [id]="formField.name" [formControlName]="formField.name">
+          <p  class="red" *ngIf="formField.required===true">این فیلد الزامیست</p>
+        </div>
+    
+        <div *ngIf="formField.controlType==='date'" class="mb-3">
+          <label  [attr.for]="formField.name" class="form-label">{{formField.label}}</label>
+          <input type="date" class="form-control" [id]="formField.name" [formControlName]="formField.name">
+          <p  class="red" *ngIf="formField.required===true">این فیلد الزامیست</p>
+        </div>
+    
+        <div *ngIf="formField.controlType==='radio'" class="mb-3 form-check">
+          <label  [attr.for]="formField.name" class="form-check-label">{{formField.label}}</label>
+          <input type="radio" class="form-check-input" [id]="formField.name" [formControlName]="formField.name">
+          <p  class="red" *ngIf="formField.required===true">این فیلد الزامیست</p>
+        </div>
+    
+        
+    
+        <div *ngIf="formField.controlType==='Dropdown'" class="mb-3">
+          <label  [attr.for]="formField.name" class="form-label">{{formField.label}}</label>
+          <input type="Dropdown" class="form-control" [id]="formField.name" [formControlName]="formField.name">
+          <p  class="red" *ngIf="formField.required===true">این فیلد الزامیست</p>
+        </div>
+        <div *ngIf="formField.controlType==='textarea'" class="mb-3">
+          <label  [attr.for]="formField.name" class="form-label">{{formField.label}}</label>
+          <input type="textarea" class="form-control" [id]="formField.name" [formControlName]="formField.name">
+          <p  class="red" *ngIf="formField.required===true">این فیلد الزامیست</p>
+        </div>
+
+       
+        </div>
+        <div>
+          <button type="submit"  class="btn btn-primary m-4"  >submit</button>
+          <button type="submit" class="btn btn-primary" (click)="defaultform()">defaultform</button>
+         </div>
+        </form>
+    </div>
+  </div>
+
+
+
+
+
+
