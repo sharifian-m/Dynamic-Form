@@ -12,7 +12,12 @@ const routes: Routes = [
  },
  {path: 'default',
  loadChildren: () =>
-   import('./Pages/default-form/default-form.module').then(m => m.DefaultFormModule)
+   import('./Pages/default-form/default-form.module').then(m => m.DefaultFormModule) 
+},
+{path: 'select',
+loadChildren: () =>
+  import('./Pages/selec-form-fields/selec-form-fields.module').then(m => m.SelecFormFieldsModule) 
+  // , outlet:'outlet1'
 },
  
  

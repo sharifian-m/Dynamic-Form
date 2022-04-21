@@ -10,12 +10,17 @@ export class FormFieldService {
   private field$ = new BehaviorSubject<defaultFields[]>([]);
   currentfildes$ = this.field$.asObservable();
 
+  private loading$ = new BehaviorSubject<boolean>(false);
+  currentLoading$ = this.loading$.asObservable();
   constructor() {}
 
   setField(field: defaultFields) {
     this.field$.next([...this.field$.value, field]);
   }
 
+  setLoading(Boolean:boolean) {
+    this.loading$.next(Boolean);
+  }
   removeBehaviorsubjectItem(name: string) {
     // const example = this.field$.pipe(filter(name => name===name)
   }

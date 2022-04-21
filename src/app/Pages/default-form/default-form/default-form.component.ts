@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormFieldService } from 'src/app/Core/Services/form-field.service';
 
 @Component({
   selector: 'app-default-form',
@@ -7,12 +8,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./default-form.component.scss']
 })
 export class DefaultFormComponent implements OnInit {
-
-  constructor(private router:Router) { }
+loadFieldSelectForm=true;
+  constructor(private router:Router,
+    private formService: FormFieldService) { }
 
   ngOnInit(): void {
   }
   createCustomForm(){
+
+this.formService.setLoading(this.loadFieldSelectForm);
+
 this.router.navigate(['/custom']);
+
   }
 }
