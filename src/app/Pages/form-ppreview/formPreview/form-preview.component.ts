@@ -40,6 +40,8 @@ export class FormPreviewComponent implements OnInit {
 
   submit() {
     this.formValue = this.dynamicForm.value;
+    console.log(this.formValue );
+    
   }
 
   defaultform() {
@@ -50,6 +52,7 @@ export class FormPreviewComponent implements OnInit {
     this.formService.setLoading(false);
     this.router.navigate(['default']);
   }
+<<<<<<< HEAD
   removeField(id: number) {
     this.Swal.fire();
     for (let i = 0; i <= this.formFieldsArray.length - 1; i++) {
@@ -59,5 +62,9 @@ export class FormPreviewComponent implements OnInit {
     }
     this.formService.setField2(this.formFieldsArray);
    
+=======
+  removeField(name: string) {
+
+>>>>>>> formArray
   }
 }
