@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { defaultFields } from 'src/app/Core/models/defaultFields';
 import { FormFieldService } from 'src/app/Core/Services/form-field.service';
@@ -19,15 +19,18 @@ export class ShowfieldsComponent implements OnInit {
   constructor(private router: Router, private formService: FormFieldService) {}
 
   ngOnInit(): void {
-    this.dynamicForm = new FormGroup({
-      fields: new FormArray([]),
-    });
-    // this.formService.currentfildes$.subscribe((x) => {
-    //   this.formFieldsArray = x;
-    //   console.log( this.formFieldsArray);
-      
+    // this.dynamicForm = new FormGroup({
+    //   fields: new FormArray([]),
     // });
+    this.dynamicForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      label: new FormControl('', [Validators.required]),
+      required: new FormControl(false),
+      controlType: new FormControl(null, [Validators.required]),
+      description: new FormControl(),
+    }); 
   }
  
-  removeField(aname:String){}
+  removeField(name:String){}
+
 }

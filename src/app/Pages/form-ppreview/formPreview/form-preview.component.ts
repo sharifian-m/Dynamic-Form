@@ -18,7 +18,8 @@ export class FormPreviewComponent implements OnInit {
   constructor(private router: Router, private formService: FormFieldService) {}
 
   ngOnInit(): void {
-this.formService.currentfildes$.subscribe((x) => {
+
+   this.formService.currentfildes$.subscribe((x) => {
       this.formFieldsArray = x;
       console.log( this.formFieldsArray);
       
