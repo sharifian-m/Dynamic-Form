@@ -6,22 +6,114 @@
     <div class="card-body">
     
       <form [formGroup]="dynamicForm" (ngSubmit)="submit()">
-      <div *ngFor="let formField of formFieldsArray" formField.name class="m-4" >
+      <div *ngFor="let formField of formFieldsArray "  formField.name class="m-4" >
       
-      <app-showfields [formField]="formField"></app-showfields>
-       
+
+<div *ngIf="formField.controlType==='textbox'" class="mb-3">
+  
+  <label  [attr.for]="formField.name" class="form-label">{{formField.title}}</label>
+  <div class="d-flex">
+  <input type="text" class="form-control" [id]="formField.name" formControlNam='textbox' >
+  <mat-icon class="mt-2" (click)="removeField(formField.id)">delete_forever</mat-icon>
+</div>
+  <p  class="red" *ngIf="formField.required===true">پر کردن این فیلد الزامیست</p>
+</div>
+
+<div   *ngIf="formField.controlType==='number'" class="mb-3" >
+  <label  [attr.for]="formField.name" class="form-label">{{formField.title}}</label>
+  <div class="d-flex">
+    
+  <input type="number" class="form-control" [id]="formField.name" formControlName='number'> 
+  <mat-icon class="mt-2" (click)="removeField(formField.id)">delete_forever</mat-icon>
+  </div>
+  <p  class="red" *ngIf="formField.required===true">پر کردن این فیلد الزامیست</p>
+</div>
+
+<div (click)="removeField(formField.id)"  *ngIf="formField.controlType==='checkbox'" class="mb-3 form-check form-check-inline">
+  
+  <div class="d-flex">
+  <input type="checkbox" class="form-check-input me-3" [id]="formField.name" formControlName=checkbox>
+  <label  [attr.for]="formField.name" class="form-check-label">{{formField.title}}</label>
+  <mat-icon class=" " (click)="removeField(formField.id)">delete_forever</mat-icon>
+</div>
+  <p  class="red" *ngIf="formField.required===true">  این فیلد الزامیست</p>
+</div>
+
+
+<div (click)="removeField(formField.id)" *ngIf="formField.controlType==='email'" class="mb-3">
+  <label  [attr.for]="formField.name" class="form-label">{{formField.title}}</label>
+  <div class="d-flex">
+  <input type="email" class="form-control" [id]="formField.name" formControlName='email'>
+  <mat-icon class="mt-2" (click)="removeField(formField.id)">delete_forever</mat-icon>
+</div>
+  <p  class="red" *ngIf="formField.required===true">این فیلد الزامیست</p>
+</div>
+
+<div (click)="removeField(formField.id)" *ngIf="formField.controlType==='date'" class="mb-3">
+  <label  [attr.for]="formField.name" class="form-label">{{formField.title}}</label>
+  <div class="d-flex">
+  <input type="date" class="form-control" [id]="formField.name" formControlName='date'>
+  <mat-icon class="mt-2" (click)="removeField(formField.id)">delete_forever</mat-icon>
+</div>
+  <p  class="red" *ngIf="formField.required===true">این فیلد الزامیست</p>
+</div>
+
+<div (click)="removeField(formField.id)"  *ngIf="formField.controlType==='radio'" class="mb-3 form-check">
+  
+  <div class="d-flex">
+  <input type="radio" class="form-check-input me-3" [id]="formField.name" formControlName='radio'>
+  <label  [attr.for]="formField.name" class="form-check-label me-3">{{formField.title}}</label>
+  <mat-icon class="" (click)="removeField(formField.id)">delete_forever</mat-icon>
+</div>
+  <p  class="red" *ngIf="formField.required===true">این فیلد الزامیست</p>
+</div>
+
+<div (click)="removeField(formField.id)" *ngIf="formField.controlType==='dropdown'" class="mb-3 ">
+<label  [attr.for]="formField.name">{{formField.title}}</label>
+<div class="d-flex">
+ 
+  <select  name="formField.name" [id]="formField.name" formControlName="dropdown">
+    <option class="dropdown-item me-2"  value="1">list1</option>
+    <option class="dropdown-item me-2"  value="2">list2</option>
+    <option class="dropdown-item me-2"  value="3">list3</option>
+    <option class="dropdown-item me-2"   value="4">list4</option>
+  </select>
+  <mat-icon (click)="removeField(formField.id)">delete_forever</mat-icon>
+</div>
+</div>
+
+<div (click)="removeField(formField.id)" *ngIf="formField.controlType==='textarea'" class="mb-3">
+  <label  [attr.for]="formField.name" class="form-label">{{formField.title}}</label>
+  <div class="d-flex">
+
+  <input type="textarea" class="form-control" [id]="formField.name" formControlName='textarea'>
+  <mat-icon (click)="removeField(formField.id)">delete_forever</mat-icon>
+</div>
+  <p  class="red" *ngIf="formField.required===true">این فیلد الزامیست</p>
+</div>
+
+    
         </div>
         <div>
           <button type="submit"  class="btn btn-primary m-4"  >submit</button>
           <button type="submit" class="btn btn-primary" (click)="defaultform()">defaultform</button>
          </div>
         </form>
-        <!-- <p>Form value: {{ formValue | json }}</p> -->
+     
     </div>
   </div>
 
 
 
-
+  <swal
+  #Swal
+  title="Are you Sure Delete?"
+  text="This cannot be undo"
+  icon="question"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  >
+ 
+</swal>
 
 

@@ -8,16 +8,19 @@ import { FormFieldService } from 'src/app/Core/Services/form-field.service';
   styleUrls: ['./default-form.component.scss']
 })
 export class DefaultFormComponent implements OnInit {
-loadFieldSelectForm=true;
+// loading!:boolean;
   constructor(private router:Router,
     private formService: FormFieldService) { }
 
   ngOnInit(): void {
+   
   }
   createCustomForm(){
-
-this.formService.setLoading(this.loadFieldSelectForm);
-
+    // this.formService.currentLoading$.subscribe(x=>{
+    //   this.loading=x;
+    // })
+    // console.log(this.loading);
+this.formService.setLoading(true)
 this.router.navigate(['/custom']);
 
   }

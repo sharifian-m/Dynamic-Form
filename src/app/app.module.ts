@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DefaultFormComponent } from './Pages/default-form/default-form/default-form.component';
 import { SelecFormFieldsModule } from './Pages/selec-form-fields/selec-form-fields.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './Shared/angular-material/angular-material.module';
 
 
 @NgModule({
@@ -21,7 +23,9 @@ import { SelecFormFieldsModule } from './Pages/selec-form-fields/selec-form-fiel
     AppRoutingModule,
     ReactiveFormsModule,
     SweetAlert2Module.forRoot(),
-    SelecFormFieldsModule
+    SelecFormFieldsModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

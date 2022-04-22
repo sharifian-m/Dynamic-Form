@@ -6,13 +6,14 @@ import { FormPreviewComponent } from './Pages/form-ppreview/formPreview/form-pre
 
 const routes: Routes = [
   { path: '', redirectTo: 'default', pathMatch: 'full' },
-  {path: 'custom',
-  loadChildren: () =>
-    import('./Pages/form-ppreview/form-ppreview.module').then(m => m.FormPpreviewModule)
- },
+ 
  {path: 'default',
  loadChildren: () =>
    import('./Pages/default-form/default-form.module').then(m => m.DefaultFormModule) 
+},
+{path: 'custom',
+loadChildren: () =>
+  import('./Pages/form-ppreview/form-ppreview.module').then(m => m.FormPpreviewModule)
 },
 {path: 'select',
 loadChildren: () =>

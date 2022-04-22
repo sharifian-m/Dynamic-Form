@@ -12,7 +12,7 @@
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Field Title</label>
-        <input type="text" class="form-control" id="exampleFormControlInput1"  formControlName="label" placeholder="enter Field Title">
+        <input type="text" class="form-control" id="exampleFormControlInput1"  formControlName="title" placeholder="enter Field Title">
       </div>
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">Field Descripion</label>
@@ -38,7 +38,7 @@
           <label class="form-check-label" for="flexSwitchCheckDefault" >Required</label>
         </div>
        <div>
-        <button type="submit" [disabled]="form.invalid" class="btn btn-primary m-4" >Add to Form</button>
+        <button type="submit" [disabled]="form.invalid" class="btn btn-primary m-4"  >Add to Form</button>
         <button type="button" [disabled]="form.invalid" class="btn btn-primary m-4" (click)="addNewField()">Add New Field</button>
         <button type="button"  class="btn btn-primary m-4"  (click)="newForm()"> Create New Form</button>
        </div>

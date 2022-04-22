@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, filter } from 'rxjs';
+import { BehaviorSubject, filter, Observable } from 'rxjs';
 import { defaultFields } from '../models/defaultFields';
-
 
 @Injectable({
   providedIn: 'root',
@@ -16,22 +15,25 @@ export class FormFieldService {
 
   setField(field: defaultFields) {
     this.field$.next([...this.field$.value, field]);
+    // console.log(this.field$.next([...this.field$.value, field]));
+    
+  }
+  setField2(field: defaultFields[]) {
+    this.field$.next(field);
   }
 
-  setLoading(Boolean:boolean) {
+  setLoading(Boolean: boolean) {
     this.loading$.next(Boolean);
   }
-  removeBehaviorsubjectItem(name: string) {
-    // const example = this.field$.pipe(filter(name => name===name)
-  }
+//   removeFieldItem(name: string):Observable<defaultFields[]> {
+//     const field: defaultFields[] = this.field$.getValue();
+//     let results :defaultFields[];
+//     for (let i = 0; i < field.length; i++) {
+//       if(field[i].name===name){
+//          results =field.splice(i, 1); 
+//         }
+//      return   this.field$.next(results);
+                   
+//       }
+// }
 }
-
-// const field: defaultFields[] = this.field$.getValue();
-// field.forEach((item, index) => {
-//   if (item.name === data) {
-//     field.splice(index, 1);
-//   }
-// });
-// console.log(field);
-
-// return this.field$.next(field);
