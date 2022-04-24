@@ -9,6 +9,8 @@ import { DefaultFormComponent } from './Pages/default-form/default-form/default-
 import { SelecFormFieldsModule } from './Pages/selec-form-fields/selec-form-fields.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './Shared/angular-material/angular-material.module';
+import { MainHeaderComponent } from './Layouts/main-header/main-header.component';
+
 
 
 @NgModule({
@@ -16,6 +18,7 @@ import { AngularMaterialModule } from './Shared/angular-material/angular-materia
     AppComponent,
     
     DefaultFormComponent,
+          MainHeaderComponent,
  
   ],
   imports: [
@@ -25,7 +28,8 @@ import { AngularMaterialModule } from './Shared/angular-material/angular-materia
     SweetAlert2Module.forRoot(),
     SelecFormFieldsModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
