@@ -1,9 +1,18 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { defaultFields } from 'src/app/Core/models/defaultFields';
 import { FormFieldService } from 'src/app/Core/Services/form-field.service';
 import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
+
 @Component({
   selector: 'app-form-preview',
   templateUrl: './form-preview.component.html',
@@ -12,12 +21,25 @@ import { SwalComponent } from '@sweetalert2/ngx-sweetalert2';
 export class FormPreviewComponent implements OnInit {
   @ViewChild('Swal') public readonly Swal!: SwalComponent;
   formValue = ' ';
-  formFieldsArray: defaultFields[] = [];
+  @Input() formFieldsArray: defaultFields[] = [];
+  @Output() propertyForEditForEmit = new EventEmitter();
+  propertyForEdit: defaultFields | undefined;
   dynamicForm!: FormGroup;
+  loading!: boolean;
 
   constructor(private router: Router, private formService: FormFieldService) {}
 
+
   ngOnInit(): void {
+    this.createForm();
+
+    this.formService.currentLoading$.subscribe((x) => {
+      this.loading = x;
+      console.log(this.loading);
+    });
+  }
+
+  createForm() {
     this.dynamicForm = new FormGroup({
       textbox: new FormControl('', [
         Validators.required,
@@ -31,35 +53,26 @@ export class FormPreviewComponent implements OnInit {
       dropdown: new FormControl(),
       textarea: new FormControl(),
     });
-
-    this.formService.currentfildes$.subscribe((x) => {
-      this.formFieldsArray = x;
-      console.log(' this.formFieldsArray ', this.formFieldsArray);
-    });
   }
-
   submit() {
     this.formValue = this.dynamicForm.value;
-    console.log(this.formValue );
-    
+    console.log(this.formValue);
   }
 
-  defaultform() {
-    // this.formService.currentLoading$.subscribe((x) => {
-    //   this.loading = x;
-    // });
-    // console.log(this.loading);
-    this.formService.setLoading(false);
-    this.router.navigate(['default']);
+  edit(id: number) {
+    this.propertyForEdit = this.formFieldsArray.find((x) => x.id === id);
+    this.propertyForEditForEmit.emit(this.propertyForEdit);
   }
+
   removeField(id: number) {
-    this.Swal.fire();
+    // this.Swal.fire();
+    console.log('formFieldsArray before delete', this.formFieldsArray);
     for (let i = 0; i <= this.formFieldsArray.length - 1; i++) {
       if (this.formFieldsArray[i].id === id) {
         this.formFieldsArray.splice(i, 1);
       }
     }
-    this.formService.setField2(this.formFieldsArray);
-   
+    this.formFieldsArray = [...this.formFieldsArray];
+    console.log('formFieldsArray after delete', this.formFieldsArray);
   }
 }

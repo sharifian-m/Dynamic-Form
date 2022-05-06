@@ -1,0 +1,70 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <div class="card m-2" >
+        <div class="card-header">
+         form {{formMode}}
+        </div>
+        <div class="card-body">
+          <form [formGroup]="form" (ngSubmit)="addToForm()">
+            <div class="row">
+            
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Field name</label>
+            <input class="form-control" id="exampleFormControlInput1"  formControlName="name" placeholder="enter Field name">
+          </div>
+         
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Field Title</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1"  formControlName="title" placeholder="enter Field Title">
+          </div>
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Field Descripion</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" formControlName="description" rows="3"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="controlType" class="form-label" >Type</label>
+        
+              <select class="form-select form-select-sm" aria-label=".form-select-sm example" formControlName="controlType">
+              <option value="textbox">Text</option>
+              <option value="email">Email</option>
+              <option value="number">Number</option>
+              <option value="date">Date</option>
+              <option value="dropdown">Dropdown</option>
+              <option value="checkbox">Checkbox</option>
+              <option value="radio">Radio</option>
+              <option value="textarea">Textarea</option>
+            </select>
+        
+          </div>
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" formControlName="required" id="flexSwitchCheckDefault">
+              <label class="form-check-label" for="flexSwitchCheckDefault" >Required</label>
+            </div>
+           <div>
+            <button type="submit" [disabled]="form.invalid" class="btn btn-primary m-2"   *ngIf="formMode=='new'">Add to Form</button>
+            <button type="button" [disabled]="form.invalid" class="btn btn-primary m-2" *ngIf="formMode=='edit'" (click)="editField()">edit Field</button>
+            <button type="button" [disabled]="form.invalid" class="btn btn-primary m-2" (click)="NewField()"> New Field</button>
+            <button type="button"  class="btn btn-primary m-2"  (click)="newForm()"> Create New Form</button>
+           </div>
+        </div>
+        
+        </form>
+        </div>
+        </div>
+    </div>
+    <div class="col-6">
+      <app-form-preview [formFieldsArray]="formFields" (propertyForEditForEmit)="getEdiInformation($event)" ></app-form-preview>
+    </div>
+  </div>
+</div>
+
+    <!-- <swal
+  #Swal
+  title="Delete current Form?"
+  text="This cannot be undo"
+  icon="question"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+  (confirm)="addNewField()">
+</swal> -->

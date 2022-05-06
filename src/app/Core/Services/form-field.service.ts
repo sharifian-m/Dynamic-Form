@@ -15,9 +15,8 @@ export class FormFieldService {
 
   setField(field: defaultFields) {
     this.field$.next([...this.field$.value, field]);
-    // console.log(this.field$.next([...this.field$.value, field]));
-    
-  }
+      }
+      
   setField2(field: defaultFields[]) {
     this.field$.next(field);
   }
@@ -25,15 +24,14 @@ export class FormFieldService {
   setLoading(Boolean: boolean) {
     this.loading$.next(Boolean);
   }
-//   removeFieldItem(name: string):Observable<defaultFields[]> {
-//     const field: defaultFields[] = this.field$.getValue();
-//     let results :defaultFields[];
-//     for (let i = 0; i < field.length; i++) {
-//       if(field[i].name===name){
-//          results =field.splice(i, 1); 
-//         }
-//      return   this.field$.next(results);
-                   
-//       }
-// }
+  // editFieldInformation(formValue:defaultFields){
+  //   let values=this.getFormValues();
+  //   console.log('values', values.id);
+    
+  //   let index = this.formFields.findIndex(x=> { return x.id==values.id});
+  //   console.log('index',index);
+    
+  //   this.formFields[index]=values;
+  //   console.log('formFields after edit',this.formFields);
+  // }
 }
