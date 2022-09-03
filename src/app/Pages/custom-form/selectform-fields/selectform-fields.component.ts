@@ -93,6 +93,7 @@ export class SelectformFieldsComponent implements OnInit {
 
   NewField() {
     this.form.reset();
+    this.formMode='new'
   }
   newForm() {
     // this.Swal.fire();
